@@ -1,19 +1,21 @@
 import React from 'react';
-import logo from '../../../src/logo.jpg'
-import './Header.css'
-
+import logo from '../../logo.jpg';
+import './Header.css';
 
 const Header = () => {
     return (
         <div className='header'>
             <div className="navigation">
                 <div className="logo">
-                    <img src={logo} alt="logo" />
+                    <img src={logo} alt="amarbay" />
                 </div>
                 <div className="nav">
-                    <a href="shop">Shop</a>
-                    <a href="cart">Cart</a>
-                    <a href="checkout">Checkout</a>
+                    <ul>
+                        <li><a href="Shop">Shop</a></li>
+                        <li><a href="Product">Product</a></li>
+                        <li><a href="Cart">Cart</a></li>
+                        <li><a href="CheckOut">CheckOut</a></li>
+                    </ul>
                 </div>
             </div>
         </div>

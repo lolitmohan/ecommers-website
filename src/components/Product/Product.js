@@ -1,23 +1,23 @@
 import React from 'react';
 import './Product.css'
-const Product = (props) => {
-    // console.log(props.product)
 
-    const {name, price, stock, img} = props.product;
+const Product = (props) => {
+    console.log(props.product)
+
+    const {img, name, price, stock, id} = props.product;
+
     return (
         <div className='product'>
             <div className="product-img">
-                <img src={img} alt="product" />
+                <img src={img} alt="Lolit" />
             </div>
-            <h2>{name}</h2>
-            <h3>${price}</h3> 
-            <p> In Stock : {stock}</p>
-            <button onClick={props.product} className='btn-cart'> Add to cart</button>
-
-            {/* <img src={img} alt="" />
-            <h2>{name}</h2>
-            <h3>{price}</h3>
-            <h4>{stock}</h4> */}
+            <h2>Name: {name}</h2>
+            <h3>Price: ${price}</h3>
+            <p>In stock{stock}</p>
+            <h3>Product ID: {id}</h3>
+            <div className="btn-carts">
+                <button className='btn' onClick={ ()=> props.addToCart(props.product)}>Add To Cart</button>
+            </div>
         </div>
     );
 };

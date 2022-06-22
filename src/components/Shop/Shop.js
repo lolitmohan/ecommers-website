@@ -1,42 +1,45 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import './Shop.css'
+import  {useEffect, useState} from 'react'
 import Product from '../Product/Product';
-import './Shop.css';
-
-
+import Cart from '../Cart/cart'
 
 
 const Shop = () => {
-    const [products, setProducts] = useState([]);
-    const [cart, setCart] = useState([]);
+    
+    const [product, setProduct] = useState([])
+    const [cart, setCart] = useState([])
 
+
+    const addToCart = (product)=>{
+        console.log("Click");
+
+        const newCart = [...cart, product]
+        setCart(newCart)
+        console.log(cart)
+
+    }
 
     useEffect(()=>{
         fetch('./fakedata.json')
         .then(res => res.json())
-        .then(data => setProducts(data))
+        .then(data => setProduct(data))
+
     },[])
 
-const addToCart = (product) =>{
-    // console.log("click")
-    const newCart = [...cart, product]
-    setCart(newCart)
-    console.log(cart)
-}
-
+     
 
     return (
         <div className='shop-container'>
+        <h2>Thsi is a Product  {product.length}</h2>
             <div className="product-container">
-                <h1>Products {products.length}</h1>
                 <div className="all-product">
                     {
-                        products.map(product =>  <Product product ={product} addToCart= {addToCart} key={product.id}></Product>)
+                        product.map(product => <Product product={product} addToCart={addToCart} key={product.id}></Product>)
                     }
                 </div>
-            </div>
-            <div className="cart-container">
                 <div className="cart">
-                    <p>This is cart : {cart.length}</p>
+                    <Cart cart={cart}></Cart>
                 </div>
             </div>
         </div>
